@@ -1,0 +1,60 @@
+.TH "WMBlueMem" "1" "0.12" "Mihai Draghicioiu" "Dockapps"
+.SH "NAME"
+\fBWMBlueMem\fP \- A memory monitor
+.SH "SYNOPSIS"
+wmbluemem [options]
+.SH "DESCRIPTION"
+.PP
+\fBWMBlueMem\fP is a very boring linux application. Anyway, if you're a dork,
+you shouldn't need to read this manual page. Have fun.
+
+.SH "OPTIONS"
+\fBWMBlueMem\fP accepts the following command-line options:
+.TP 
+.B \-h,  \-\-help
+display basic usage info and exit.
+.TP 
+.B \-v,  \-\-version
+display version and exit.
+.TP 
+.B \-display <dpy>
+Specify the X11 display to connect to
+.TP 
+.B \-m,  \-\-milisecs <ms>
+Number of miliseconds between updates
+.TP 
+.B \-w,  \-\-window
+Run in a window
+.TP 
+.B \-nw, \-\-no\-window
+Don't run in a window
+.TP 
+.B \-s,  \-\-shape
+Use the XShape extension
+.TP
+.B \-ns, \-\-no\-shape
+Don't use the XShape extension
+.TP
+.B \-b,  \-\-bgcolor  <col> 
+Specify the background color
+.TP 
+.B \-f,  \-\-offcolor <col>
+Specify the color for off leds
+.TP 
+.B \-o,  \-\-oncolor  <col>
+Specify the color for text and on leds
+.TP 
+.B \-b,  \-\-buffers
+Consider buffer memory
+.TP 
+.B \-nb, \-\-no\-buffers
+Ignore buffer memory
+.TP 
+.B \-c,  \-\-cache
+Consider cache memory
+.TP 
+.B \-nc, \-\-no\-cache
+Ignore cache memory
+
+.SH "AUTHOR"
+Mihai Draghicioiu <mihai.draghicioiu@gmail.com>
