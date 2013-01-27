@@ -41,7 +41,7 @@ void mem_init()
 
  /* new format ? (kernel >= 2.5.1pre?) */
  /* see linux/fs/proc/proc_misc.c */
- if (version >= 2 && patchlevel >= 5 && sublevel >= 1)
+ if (version > 2 || (version == 2 && patchlevel >= 5 && sublevel >= 1))
   isnewformat = 1;
 }
 
