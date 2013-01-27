@@ -35,6 +35,7 @@ endif
 CC=gcc
 RM=rm -rf
 INST=install
+MKDIR_P=mkdir -p
 
 all: $(PROG)
 
@@ -47,6 +48,7 @@ clean:
 	$(RM) *.o $(PROG) *~ *.bak *.BAK .xvpics
 install: $(PROG) $(MANUAL)
 	$(INST) -m 755 $(PROG) $(BINDIR)
+	$(MKDIR_P) $(MANDIR)
 	$(INST) -m 644 $(MANUAL) $(MANDIR)
 uninstall:
 	$(RM) $(BINDIR)/$(PROG)
