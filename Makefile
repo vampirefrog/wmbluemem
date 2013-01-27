@@ -6,7 +6,7 @@ PREFIX=/usr/local
 # Use Xft for the menu
 USE_XFT=yes
 
-VERSION=0.12
+VERSION=0.13
 
 PROG=wmbluemem
 BINDIR=$(PREFIX)/bin
