@@ -188,7 +188,7 @@ static void draw_menuitem(menu_t *m, int y, int on, int width)
    XSetForeground(display, m->gc, fg->pixel);
    if(i->checked == 1) XFillRectangle(display, m->window, m->gc, 2, 2 + n * h, h - 4, h - 4);
    else if(i->checked == 0) XDrawRectangle(display, m->window, m->gc, 2, 2 + n * h, h - 5, h - 5);
-   XftDrawString8(m->draw, fg, m->font, 2 + h, 2 + n * h + m->font->ascent, i->title, strlen(i->title));
+   XftDrawString8(m->draw, fg, m->font, 2 + h, 2 + n * h + m->font->ascent, (unsigned char *)i->title, strlen(i->title));
 #else
    XSetForeground(display, m->gc, bg);
    XFillRectangle(display, m->window, m->gc, 0, n * h, width, h);
@@ -207,7 +207,8 @@ int menu_pop(menu_t *m)
  menuitem_t *i;
  XEvent ev;
  Window root_return, child_return;
- int root_x, root_y, win_x, win_y, mask_ret;
+ int root_x, root_y, win_x, win_y;
+ unsigned int mask_ret;
  int y = -1, y2, w, h, height, width;
  int done = 0;
  XWindowAttributes a;
@@ -227,7 +228,7 @@ int menu_pop(menu_t *m)
 #ifdef USE_XFT
   XGlyphInfo g;
 
-  XftTextExtents8(display, m->font, i->title, strlen(i->title), &g);
+  XftTextExtents8(display, m->font, (unsigned char *)i->title, strlen(i->title), &g);
   w = g.xOff + 2;
 #else
   w = XTextWidth(m->font, i->title, strlen(i->title)) + 2;
@@ -239,8 +240,6 @@ int menu_pop(menu_t *m)
 
  XQueryPointer(display, rootwindow, &root_return, &child_return,
 				&root_x, &root_y, &win_x, &win_y, &mask_ret);
-// printf("root_x %d root_y %d width %d height %d a.width %d a.height %d\n",
-//        root_x, root_y, width, height, a.width, a.height);
 
  if(root_x < 0) root_x = 0; if(root_y < 0) root_y = 0;
  if(root_x + width > a.width) root_x -= width + 1; else root_x += 2;
